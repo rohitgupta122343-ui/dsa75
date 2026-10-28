@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const base = (import.meta.env.VITE_API_URL || 'http://localhost:5000').replace(/\/$/, '');
+const base = (import.meta.env.VITE_API_URL || 'https://dsa75.onrender.com').replace(/\/$/, '');
 
 export const api = axios.create({ baseURL: `${base}/api`, withCredentials: true, timeout: 30000 });
 
