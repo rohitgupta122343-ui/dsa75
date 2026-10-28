@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root, :root[data-theme='dark'] {
+  --ink: 11 17 15; --panel: 18 27 24; --raised: 27 39 35; --line: 40 56 50;
+  --fg: 230 239 233; --mute: 138 155 147; --accent: 61 220 132; --warn: 240 180 60; --bad: 244 105 115;
+  color-scheme: dark;
+}
+:root[data-theme='light'] {
+  --ink: 246 248 247; --panel: 255 255 255; --raised: 238 243 240; --line: 214 223 218;
+  --fg: 20 30 26; --mute: 98 114 106; --accent: 18 145 82; --warn: 176 110 0; --bad: 200 50 70;
+  color-scheme: light;
+}
+html, body, #root { height: 100%; }
+body { @apply bg-ink text-fg font-sans antialiased; }
+:focus-visible { outline: 2px solid rgb(var(--accent)); outline-offset: 2px; }
+
+@layer components {
+  .card { @apply rounded-xl border border-line bg-panel; }
+  .input { @apply w-full rounded-lg border border-line bg-ink px-3 py-2 text-sm text-fg placeholder:text-mute focus:border-accent focus:outline-none; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 py-2 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50; }
+  .btn-primary { @apply btn bg-accent text-ink hover:bg-accent/85; }
+  .btn-ghost { @apply btn border border-line bg-raised text-fg hover:border-mute/60; }
+  .btn-danger { @apply btn bg-bad text-ink hover:bg-bad/85; }
+  .skeleton { @apply animate-pulse rounded-md bg-raised; }
+}
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
